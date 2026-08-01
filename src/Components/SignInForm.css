@@ -1,0 +1,248 @@
+* {
+  box-sizing: border-box;
+}
+.signin-page {
+  min-height: 100vh;
+}
+/* Wraps Left & Right Panels */
+.signin-wrapper {
+  min-height: 100vh;
+  display: flex;
+}
+.signin-brand-panel {
+  flex: 1; /* Left panel takes up 1 part of the available space*/
+  position: relative; /* Positioning context for the glow elements */
+  display: flex; /* Flexbox for centering content */
+  align-items: center;/* Vertically center the content */
+  justify-content: center;
+  padding: 80px;
+  background: linear-gradient(135deg, #1b1113 0%, #2a1618 100%);
+  overflow: hidden; /* Ensures glow elements don't overflow the panel */
+}
+.signin-glow-top {
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(237,28,36,0.45) 0%, rgba(237,28,36,0.15) 40%, rgba(237,28,36,0) 75%);
+  filter: blur(60px);
+}
+.signin-brand-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1000px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.signin-brand-title {
+  margin: 0 0 20px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(42px, 4vw, 78px);/* Responsive font size between 42px and 78px */
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: white;
+}
+.signin-brand-title .accent {
+  color: #ed1c24;
+}
+.signin-brand-subtitle {
+  margin: 0;
+  max-width: 760px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(18px, 2vw, 32px);
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+/* ===== RIGHT PANEL ===== */
+
+.signin-form-panel {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #f8f9fb;
+  padding: 40px;
+}
+
+/* ===== CARD ===== */
+
+.signin-card {
+  width: 520px;
+
+  background: #ffffff;
+
+  padding: 48px;
+
+  border-radius: 24px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0px 10px 25px rgba(0, 0, 0, 0.05),
+    0px 25px 50px rgba(0, 0, 0, 0.08);
+}
+/* ===== HEADER ===== */
+
+.signin-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.signin-title {
+  margin: 0;
+
+  font-size: 42px;
+  font-weight: 700;
+
+  color: #1f2937;
+}
+
+.signin-subtitle {
+  margin-top: 10px;
+
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* ===== FORM ===== */
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signin-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.signin-input {
+  width: 100%;
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  font-size: 14px;
+}
+
+.signin-input:focus {
+  outline: none;
+  border-color: #ed1c24;
+}
+
+.signin-input.has-error {
+  border-color: #ed1c24;
+}
+
+.signin-error-text {
+  font-size: 12px;
+  color: #ed1c24;
+}
+
+.signin-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signin-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+.signin-remember span {
+  font-size: 14px;
+  color: #374151;
+}
+
+.signin-forgot-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ed1c24;
+  text-decoration: none;
+}
+
+/* ===== PRIMARY BUTTON ===== */
+
+.signin-btn-primary {
+  width: 100%;
+  height: 52px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #ed1c24;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.signin-btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* ===== FOOTER ===== */
+
+.signin-footer-text {
+  text-align: center;
+
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.signin-footer-link {
+  color: #ed1c24;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signin-footer-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 1000px) {
+  .signin-wrapper {
+    flex-direction: column;
+  }
+
+  .signin-brand-panel {
+    min-height: 300px;
+  }
+
+  .signin-brand-title {
+    font-size: 42px;
+  }
+
+  .signin-card {
+    width: 100%;
+    max-width: 520px;
+  }
+}
