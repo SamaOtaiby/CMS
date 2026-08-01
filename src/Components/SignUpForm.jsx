@@ -39,21 +39,21 @@ export default function SignUpForm() {
     e.preventDefault();
     if (!validate()) return;
 
-    // TODO: replace with real API call once backend contract is confirmed
-    // e.g. fetch("/api/auth/signup", { method: "POST", body: JSON.stringify(formData) })
+    // replace with real API 
+
     console.log("Sign up submitted:", formData);
   };
 
   return (
     <div className="signup-page">
       <div className="signup-wrapper">
-        {/* LEFT: BRAND PANEL */}
+    
         <div className="signup-brand-panel">
           <div className="signup-glow-top" />
           <div className="signup-glow-bottom" />
 
           <div className="signup-brand-content">
-            <h2 className="signup-brand-title">Welcome</h2>
+            <h2 className="signup-brand-title">  Welcome</h2>
             <p className="signup-brand-subtitle">
               Sign up to create your enterprise account, manage operations, and
               collaborate securely across your digital ecosystem.
@@ -120,7 +120,7 @@ export default function SignUpForm() {
                 <div className="signup-divider-line" />
               </div>
 
-              {/* Google Button with Icon on the right */}
+              
               <button type="button" className="signup-btn-google">
                 <span>Continue with Google</span>
                 <GoogleIcon />
