@@ -1,16 +1,14 @@
-# React + Vite
+# CMS Sign-Up Module
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **Sign-Up Component** built with **React** and standard CSS, matching exact pixel-perfect designs from Figma prototypes for modern enterprise applications.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Split-Screen Card Architecture**: Modern floating canvas wrapper housing both branding graphics and form fields.
+- **Form Validation**: Client-side field validation for required fields, standard email pattern checks, and password length requirements (`>= 8` characters).
+- **Responsive Layout**: Fluidly transitions from a desktop side-by-side view to a stacked mobile view.
+- **Custom Components**: Clean modular React component structure with reusable `Field` and inline SVG icons (`GoogleIcon`).
+- **Figma Design Accuracy**: Includes rounded inner form card, subtle box-shadows, glow accents, and custom input focus states.
+  s
