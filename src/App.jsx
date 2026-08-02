@@ -1,7 +1,7 @@
-
-import SignInForm from './components/SignInForm.jsx';
+import SignUPForm from './components/SignUpForm.jsx';
 function App() {
-  return <SignInForm />;
+  console.log("first test")
+  return <SignUPForm />;
 }
 
 export default App;

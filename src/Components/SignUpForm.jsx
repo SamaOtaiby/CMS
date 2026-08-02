@@ -11,6 +11,7 @@ export default function SignUpForm() {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
+    console.log(e.target);
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -39,21 +40,19 @@ export default function SignUpForm() {
     e.preventDefault();
     if (!validate()) return;
 
-    // replace with real API 
-
+    // replace with real API
     console.log("Sign up submitted:", formData);
   };
 
   return (
     <div className="signup-page">
       <div className="signup-wrapper">
-    
         <div className="signup-brand-panel">
           <div className="signup-glow-top" />
           <div className="signup-glow-bottom" />
 
           <div className="signup-brand-content">
-            <h2 className="signup-brand-title">  Welcome</h2>
+            <h2 className="signup-brand-title"> Welcome</h2>
             <p className="signup-brand-subtitle">
               Sign up to create your enterprise account, manage operations, and
               collaborate securely across your digital ecosystem.
@@ -69,36 +68,44 @@ export default function SignUpForm() {
               <p className="signup-subtitle">Sign up to create your account</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="signup-form">
-              <Field
-                label="Full Name"
-                name="fullName"
-                type="text"
-                placeholder="Enter your name"
-                value={formData.fullName}
-                onChange={handleChange}
-                error={errors.fullName}
-              />
-
-              <Field
-                label="Email Address"
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleChange}
-                error={errors.email}
-              />
-
-              <Field
-                label="Password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleChange}
-                error={errors.password}
-              />
+            <form className="signup-form" onSubmit={handleSubmit}>
+              {[
+                {
+                  label: "Full Name",
+                  name: "fullName",
+                  type: "text",
+                  placeholder: "Enter your name",
+                  value: formData.fullName,
+                  onChange: handleChange,
+                },
+                {
+                  label: "Email Address",
+                  name: "email",
+                  type: "email",
+                  placeholder: "Enter your email",
+                  value: formData.email,
+                  onChange: handleChange,
+                },
+                {
+                  label: "Password",
+                  name: "password",
+                  type: "password",
+                  placeholder: "Enter your password",
+                  value: formData.password,
+                  onChange: handleChange,
+                },
+              ].map((field) => (
+                <Field
+                  key={field.name}
+                  label={field.label}
+                  name={field.name}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  value={field.value}
+                  onChange={field.onChange}
+                  error={errors[field.name]}
+                />
+              ))}
 
               <label className="signup-remember">
                 <input
@@ -110,7 +117,10 @@ export default function SignUpForm() {
                 <span>Remember me</span>
               </label>
 
-              <button type="submit" className="signup-btn-primary">
+              <button
+                type="submit"
+                className="signup-btn-primary"
+              >
                 Sign Up
               </button>
 
@@ -120,7 +130,6 @@ export default function SignUpForm() {
                 <div className="signup-divider-line" />
               </div>
 
-              
               <button type="button" className="signup-btn-google">
                 <span>Continue with Google</span>
                 <GoogleIcon />
@@ -137,6 +146,89 @@ export default function SignUpForm() {
         </div>
       </div>
     </div>
+  );
+}
+
+function Field({ label, name, type, placeholder, value, onChange, error }) {
+  const [showPassword, setShowPassword] = useState(false);
+  const isPasswordField = type === "password";
+
+  // Toggle input type dynamically if it's a password field
+  const inputType = isPasswordField
+    ? showPassword
+      ? "text"
+      : "password"
+    : type;
+
+  return (
+    <div className="signup-field">
+      <label htmlFor={name} className="signup-label">
+        {label}
+      </label>
+
+      <div className="signup-input-wrapper">
+        <input
+          id={name}
+          name={name}
+          type={inputType}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className={`signup-input${error ? " has-error" : ""}`}
+        />
+
+        {isPasswordField && (
+          <button
+            type="button"
+            className="signup-eye-btn"
+            onClick={() => setShowPassword((prev) => !prev)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+          </button>
+        )}
+      </div>
+
+      {error && <span className="signup-error-text">{error}</span>}
+    </div>
+  );
+}
+
+/* --- ICONS --- */
+
+function EyeIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function EyeOffIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+      <line x1="1" y1="1" x2="23" y2="23" />
+    </svg>
   );
 }
 
@@ -160,25 +252,5 @@ function GoogleIcon() {
         d="M9 3.58c1.32 0 2.51.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.97l2.99 2.33C4.66 5.17 6.65 3.58 9 3.58z"
       />
     </svg>
-  );
-}
-
-function Field({ label, name, type, placeholder, value, onChange, error }) {
-  return (
-    <div className="signup-field">
-      <label htmlFor={name} className="signup-label">
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className={`signup-input${error ? " has-error" : ""}`}
-      />
-      {error && <span className="signup-error-text">{error}</span>}
-    </div>
   );
 }
